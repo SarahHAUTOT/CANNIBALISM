@@ -31,8 +31,20 @@ public class GerantPlayer implements Runnable
 
 	public void run() 
 	{
-		// Demande du nom et port 
-		this.connection();
+		try 
+		{
+			this.out.println("Entrez un nom d'utilisateur :");
+			String newName = this.in.readLine();
+
+			//If their is a name, change it. If not, just leave it.
+			if (!newName.equals(""))
+				this.player.setName(newName);
+				
+
+			// Demande du nom et port 
+			this.connection();
+
+		}
 
 	}
 
@@ -40,11 +52,6 @@ public class GerantPlayer implements Runnable
 	{
 		try 
 		{
-			this.out.println("Entrez un nom d'utilisateur :");
-			String newName = this.in.readLine();
-
-			//If their is a name, change it. If not, just leave it.
-			if (!newName.equals("")) this.player.setName(newName);
 
 			this.out.println("Entrez le code de la partie:");
 			int port = Integer.parseInt(this.in.readLine());
@@ -84,7 +91,10 @@ public class GerantPlayer implements Runnable
 			{
 				this.out = new PrintWriter(this.socket.getOutputStream(), true);
 				this.in  = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));	
-			} catch (Exception e2) {}
+			} catch (Exception e2) {
+			}
+			
+			this.connection();
 		}
 	}
 	

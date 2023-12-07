@@ -20,5 +20,6 @@ public class Player
 	 * @param newName
 	 */
 	public void setName (String newName) { this.name = newName; }
+	public String getName () { return this.name; }
 	
 }

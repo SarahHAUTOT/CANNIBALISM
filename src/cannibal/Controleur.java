@@ -1,14 +1,13 @@
 package cannibal;
 
-import java.util.HashMap;
+import cannibal.metier.*;
 
 public class Controleur 
 {
-	private HashMap <Partie, int> lstPartie;
 
 	public static void main(String[] args) 
 	{
-		new Partie();
+		new Game();
 
 
 	}

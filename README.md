@@ -12,7 +12,7 @@ Aucun doute : le coupable qui a fait cela n'est rien d'autre qu'un humain, et ce
 Voulant différer des jeux habituels, CANNIBALISM est un jeu qui se joue uniquement sur le terminal. Par manque de moyens, il faut aussi être sur la même connexion.
 
 
-## Note de l'auteur :s
+## Note de l'auteur :
 
 - **07/12/2023** : Projet en préparation. Non fonctionnel pour l'instant.
 
