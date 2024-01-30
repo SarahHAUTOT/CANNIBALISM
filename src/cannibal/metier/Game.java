@@ -1,9 +1,7 @@
 package cannibal.metier;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-import cannibal.metier.Player;
 
 public class Game 
 {

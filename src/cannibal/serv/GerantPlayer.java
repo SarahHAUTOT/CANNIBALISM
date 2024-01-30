@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 import cannibal.metier.Player;
+import java.io.InputStream;
 
 public class GerantPlayer implements Runnable 
 {
@@ -43,7 +44,6 @@ public class GerantPlayer implements Runnable
 
 			// Demande du nom et port 
 			this.connection();
-
 		}
 
 	}
@@ -56,7 +56,8 @@ public class GerantPlayer implements Runnable
 			this.out.println("Entrez le code de la partie:");
 			int port = Integer.parseInt(this.in.readLine());
 
-			this.changePort(port);
+			if (isPortAvailable(port)) 
+				this.changePort(port);
 		} 
 		catch (Exception e) 
 		{
@@ -68,7 +69,8 @@ public class GerantPlayer implements Runnable
 
 	public void changePort (int port)
 	{
-		if (port == MainServer.PORT_SERVMAIN || port <= 0) return ;
+		if (port == MainServer.PORT_SERVMAIN || port <= 0)
+			return;
 
 		Socket oldSocket = this.socket;
 		try 
@@ -77,23 +79,21 @@ public class GerantPlayer implements Runnable
 
 			this.socket.close();
 
-			this.socket = new Socket( "localhost", port);
+			new GameServer(port);
+
 			this.out = new PrintWriter(this.socket.getOutputStream(), true);
-			this.in  = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+			this.in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
 
 			System.out.println("Connection au serveur réussie.");
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			System.out.println("Erreur de la connection, veuillez recommencer.");
 			this.socket = oldSocket;
-			try 
-			{
+			try {
 				this.out = new PrintWriter(this.socket.getOutputStream(), true);
-				this.in  = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));	
+				this.in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
 			} catch (Exception e2) {
 			}
-			
+
 			this.connection();
 		}
 	}

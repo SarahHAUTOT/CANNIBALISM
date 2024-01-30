@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Role
+ * Ressources
  */
-public record Role(String nameRole, String descRole, String descPower, String team, double coefResi, double coefRasa, double coefRepo, double coefFati, double coefRess)
+public record Ressources(String type, int id, String nom, Rarete rarete, String desc, int faimMin, int faimMax, int vieMin, int vieMax, int energieMin, int energieMax)
 {
 
 	/**
@@ -18,7 +18,7 @@ public record Role(String nameRole, String descRole, String descPower, String te
 	 */
 	public static List<Role> createRoles (String fic)
 	{
-		List<Role> lstRoles = new ArrayList<>();
+		List<Ressources> lstRessources = new ArrayList<>();
 
 		try 
 		{

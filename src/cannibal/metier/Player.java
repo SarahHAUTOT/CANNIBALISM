@@ -5,6 +5,8 @@ public class Player
 	public static int nbPlayers = 0;
 
 	private String name;
+	
+	private Role role;
 
 	/**
 	 * Create a player with the default name "User" + the numer of the user.
